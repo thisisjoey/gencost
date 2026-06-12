@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenCost</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <span class="logo">$</span>
+    <span class="title">GenCost</span>
+  </header>
+
+  <main>
+    <div class="field">
+      <label for="site-select">Site</label>
+      <select id="site-select">
+        <option value="">Select a site…</option>
+      </select>
+    </div>
+
+    <div class="field" id="plan-type-field" hidden>
+      <label for="plan-type-select">Plan Type</label>
+      <select id="plan-type-select"></select>
+    </div>
+
+    <div class="field" id="billing-cycle-field" hidden>
+      <label>Billing</label>
+      <div class="toggle-group">
+        <label class="toggle-opt">
+          <input type="radio" name="billing" value="monthly">
+          <span>Monthly</span>
+        </label>
+        <label class="toggle-opt">
+          <input type="radio" name="billing" value="annual" checked>
+          <span>Annual</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field" id="plan-field" hidden>
+      <label for="plan-select">Tier</label>
+      <select id="plan-select"></select>
+    </div>
+
+    <div class="field" id="rate-field" hidden>
+      <label>Rate</label>
+      <div class="toggle-group">
+        <label class="toggle-opt">
+          <input type="radio" name="rate" value="plan" checked>
+          <span>Plan</span>
+        </label>
+        <label class="toggle-opt">
+          <input type="radio" name="rate" value="topup">
+          <span>Top-up</span>
+        </label>
+      </div>
+    </div>
+
+    <div id="preview" class="preview" hidden></div>
+    <div id="todo-note" class="note" hidden></div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
