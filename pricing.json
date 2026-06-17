@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-06-12",
+  "_comment": "creditValueUSD = effectiveMonthlyPrice / monthlyCredits. yearly plans use the per-month equivalent. Keys starting with _ are ignored by the extension.",
+  "sites": [
+    {
+      "id": "kling",
+      "domain": "kling.ai",
+      "displayName": "Kling AI",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Basic (Free)",
+          "billingCycle": "none",
+          "monthlyPrice": 0,
+          "monthlyCredits": 0,
+          "creditValueUSD": 0
+        },
+        {
+          "id": "standard_monthly",
+          "name": "Standard (Monthly)",
+          "billingCycle": "monthly",
+          "monthlyPrice": 8.8,
+          "monthlyCredits": 660,
+          "creditValueUSD": 0.01333
+        },
+        {
+          "id": "standard_yearly",
+          "name": "Standard (Yearly)",
+          "billingCycle": "yearly",
+          "annualPrice": 79.2,
+          "effectiveMonthlyPrice": 6.6,
+          "monthlyCredits": 660,
+          "creditValueUSD": 0.01,
+          "_note": "User's plan (corrected from earlier '600 credits' — actual is 660)"
+        },
+        {
+          "id": "pro_monthly",
+          "name": "Pro (Monthly)",
+          "billingCycle": "monthly",
+          "monthlyPrice": 32.56,
+          "monthlyCredits": 3000,
+          "creditValueUSD": 0.01085
+        },
+        {
+          "id": "pro_yearly",
+          "name": "Pro (Yearly)",
+          "billingCycle": "yearly",
+          "annualPrice": 293.04,
+          "effectiveMonthlyPrice": 24.42,
+          "monthlyCredits": 3000,
+          "creditValueUSD": 0.00814
+        },
+        {
+          "id": "premier_monthly",
+          "name": "Premier (Monthly)",
+          "billingCycle": "monthly",
+          "monthlyPrice": 80.96,
+          "monthlyCredits": 8000,
+          "creditValueUSD": 0.01012
+        },
+        {
+          "id": "premier_yearly",
+          "name": "Premier (Yearly)",
+          "billingCycle": "yearly",
+          "annualPrice": 728.64,
+          "effectiveMonthlyPrice": 60.72,
+          "monthlyCredits": 8000,
+          "creditValueUSD": 0.00759
+        },
+        {
+          "id": "ultra_monthly",
+          "name": "Ultra (Monthly)",
+          "billingCycle": "monthly",
+          "monthlyPrice": 159.99,
+          "monthlyCredits": 26000,
+          "creditValueUSD": 0.00615
+        },
+        {
+          "id": "ultra_yearly",
+          "name": "Ultra (Yearly)",
+          "billingCycle": "yearly",
+          "annualPrice": 1429.99,
+          "effectiveMonthlyPrice": 119.17,
+          "monthlyCredits": 26000,
+          "creditValueUSD": 0.00458
+        }
+      ],
+      "topUp": {
+        "creditValueUSD": null,
+        "_todo": "Fill in Kling top-up rate: price per one-time credit pack / credits in pack"
+      },
+      "costTable": null,
+      "_costTableNote": "Optional fallback if DOM read fails. Format: { 'setting_key': credits }. Leave null to rely solely on DOM.",
+      "selectors": {
+        "buttonContainer": "div.button-pay-container",
+        "generateButton": "button.button-pay",
+        "costContainer": "div.price.none-strike",
+        "costElement": "div.price.none-strike span.value",
+        "costReaderStrategy": "text-content",
+        "_costReaderNote": "Read textContent of costElement. Handles Google Translate <font> wrappers transparently. none-strike targets the live price; if a discount shows a struck original price in a sibling div.price, this selector ignores it.",
+        "badgeAnchor": "div.price.none-strike",
+        "badgeInsertPosition": "afterend",
+        "_badgePlacementNote": "Insert badge host span immediately after div.price, as a sibling inside the button. Reads as: [icon] 32  ≈$0.53  Generate",
+        "costDataAttribute": null,
+        "costRegex": null
+      }
+    },
+    {
+      "id": "higgsfield",
+      "domain": "higgsfield.ai",
+      "displayName": "Higgsfield AI",
+      "_sliderNote": "Higgsfield offers credit sliders on Pro (600–900 credits) and Max (1800–5400 credits) at variable prices. Base slider position used as plan default; higher tiers not modelled.",
+      "planTypes": {
+        "individual": {
+          "monthly": {
+            "pro": {
+              "name": "Pro",
+              "monthlyPrice": 49,
+              "monthlyCredits": null,
+              "creditValueUSD": null,
+              "_todo": "Individual Monthly Pro: price confirmed as $49/mo but monthly credits not captured. Fill in from higgsfield.ai/pricing to compute creditValueUSD = 49 / monthlyCredits."
+            },
+            "max": {
+              "name": "Max",
+              "monthlyPrice": 79,
+              "monthlyCredits": 1800,
+              "creditValueUSD": 0.0439
+            }
+          },
+          "annual": {
+            "pro": {
+              "name": "Pro",
+              "monthlyPrice": 29,
+              "monthlyCredits": 600,
+              "creditValueUSD": 0.0483
+            },
+            "max": {
+              "name": "Max",
+              "monthlyPrice": 59,
+              "monthlyCredits": 1800,
+              "creditValueUSD": 0.0328,
+              "_badge": "Most popular"
+            }
+          }
+        },
+        "team": {
+          "monthly": {
+            "team": {
+              "name": "Team",
+              "pricePerSeat": 69,
+              "creditsPerSeat": 1000,
+              "creditValueUSD": 0.069,
+              "seats": { "min": 2, "max": 9 }
+            },
+            "scale": {
+              "name": "Scale",
+              "pricePerSeat": 169,
+              "creditsPerSeat": 2500,
+              "creditValueUSD": 0.0676,
+              "seats": { "min": 5, "max": 15 },
+              "_badge": "Best value"
+            },
+            "enterprise": {
+              "name": "Enterprise",
+              "pricePerSeat": null,
+              "creditsPerSeat": null,
+              "creditValueUSD": null
+            }
+          },
+          "annual": {
+            "team": {
+              "name": "Team",
+              "pricePerSeat": 65,
+              "creditsPerSeat": 1000,
+              "creditValueUSD": 0.065,
+              "seats": { "min": 2, "max": 9 }
+            },
+            "scale": {
+              "name": "Scale",
+              "pricePerSeat": 150,
+              "creditsPerSeat": 2500,
+              "creditValueUSD": 0.06,
+              "seats": { "min": 5, "max": 15 },
+              "_badge": "Best value"
+            },
+            "enterprise": {
+              "name": "Enterprise",
+              "pricePerSeat": null,
+              "creditsPerSeat": null,
+              "creditValueUSD": null
+            }
+          }
+        }
+      },
+      "topUp": {
+        "creditValueUSD": null,
+        "_todo": "Fill in Higgsfield top-up rate if available"
+      },
+      "costTable": null,
+      "selectors": {
+        "buttonContainer": "[data-tour-anchor=\"tour-generate-button\"]",
+        "generateButton": "button[type=\"submit\"]",
+        "costContainer": "div.flex.items-center.gap-1",
+        "costElement": null,
+        "costReaderStrategy": "last-text-node",
+        "_costReaderNote": "The cost div contains: SVG | span.opacity-50 (struck original price) | text-node (actual price). Read the last direct text node of costContainer. When there is no discount there is only one number — handle both 1-number and 2-number layouts.",
+        "badgeAnchor": "div.flex.items-center.gap-1",
+        "badgeInsertPosition": "afterend",
+        "_badgePlacementNote": "Insert badge host span immediately after the cost div, as a sibling inside the button. Reads as: Generate [icon] 48̶ 36 ≈$0.44",
+        "costDataAttribute": null,
+        "costRegex": null
+      }
+    }
+  ]
+}
