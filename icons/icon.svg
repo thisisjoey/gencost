@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background: dark navy rounded square -->
+  <rect width="128" height="128" rx="26" fill="#0f172a"/>
+  <!-- Dollar sign: cyan accent -->
+  <text
+    x="64"
+    y="88"
+    font-family="system-ui, -apple-system, 'Helvetica Neue', sans-serif"
+    font-size="80"
+    font-weight="700"
+    fill="#22d3ee"
+    text-anchor="middle"
+  >$</text>
+</svg>
