@@ -67,6 +67,21 @@ window.GenCost.strategies = {
     return match ? parseFloat(match[1]) : null;
   },
 
+  // Find the last <span> whose trimmed textContent is a pure number.
+  // Skips struck-through prices and label text. No extra selector keys needed.
+  // Used by: Higgsfield (last numeric span in the generate button)
+  'last-numeric-span': function (selectors, buttonContainer) {
+    const spans = Array.from(buttonContainer.querySelectorAll('span'));
+    for (let i = spans.length - 1; i >= 0; i--) {
+      const text = spans[i].textContent.trim();
+      if (/^\d+(\.\d+)?$/.test(text)) {
+        const n = GenCost.strategies._parseNumber(text);
+        if (n !== null) return n;
+      }
+    }
+    return null;
+  },
+
   // Apply a regex to the textContent of a container; capture group 1 is the number.
   // Required selector keys: costContainer (or falls back to buttonContainer), costRegex
   // Example: costRegex: "(\\d+) credits?" matches "32 credits"

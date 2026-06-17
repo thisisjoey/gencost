@@ -199,15 +199,15 @@
       },
       "costTable": null,
       "selectors": {
-        "buttonContainer": "[data-tour-anchor=\"tour-generate-button\"]",
-        "generateButton": "button[type=\"submit\"]",
-        "costContainer": "div.flex.items-center.gap-1",
+        "buttonContainer": "[data-tour-anchor*=\"generate\"]",
+        "generateButton": null,
+        "costContainer": null,
         "costElement": null,
-        "costReaderStrategy": "last-text-node",
-        "_costReaderNote": "The cost div contains: SVG | span.opacity-50 (struck original price) | text-node (actual price). Read the last direct text node of costContainer. When there is no discount there is only one number — handle both 1-number and 2-number layouts.",
-        "badgeAnchor": "div.flex.items-center.gap-1",
-        "badgeInsertPosition": "afterend",
-        "_badgePlacementNote": "Insert badge host span immediately after the cost div, as a sibling inside the button. Reads as: Generate [icon] 48̶ 36 ≈$0.44",
+        "costReaderStrategy": "last-numeric-span",
+        "_costReaderNote": "Higgsfield generate buttons vary by page (tour-cinema-generate, tour-generate-button, etc). Match any data-tour-anchor containing 'generate'. Credit cost is always the last purely-numeric <span> inside the button — skips the struck original price span and all label text.",
+        "badgeAnchor": null,
+        "badgeInsertPosition": "beforeend",
+        "_badgePlacementNote": "Append badge inside the button (beforeend on the button itself). Button is flex-col so badge appears as a new row below the credit count.",
         "costDataAttribute": null,
         "costRegex": null
       }
